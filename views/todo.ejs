@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Todo List APP test updated on 9 July 12:47 (IST) </title>
+        <title>Todo List APP - Colorful Edition</title>
         <style>
             body {
-                font-family: Arial, sans-serif;
-                background-color: #f4f4f4;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(to right, #ffecd2, #fcb69f);
                 color: #333;
                 margin: 0;
                 padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             h1 {
-                background-color: #4CAF50;
+                background: linear-gradient(to right, #ff6e7f, #bfe9ff);
                 color: white;
                 margin: 0;
                 padding: 20px;
                 text-align: center;
+                width: 100%;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
 
             ul {
                 list-style: none;
                 padding: 0;
+                width: 80%;
+                max-width: 600px;
             }
 
             ul li {
-                background: #fff;
+                background: white;
+                border-radius: 8px;
                 border: 1px solid #ddd;
                 margin-bottom: 10px;
                 padding: 10px;
                 position: relative;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s ease-in-out;
+            }
+
+            ul li:hover {
+                transform: scale(1.02);
             }
 
             ul li a {
@@ -39,7 +53,7 @@
             }
 
             ul li a:hover {
-                color: #4CAF50;
+                color: #ff6e7f;
             }
 
             .delete-btn {
@@ -47,6 +61,8 @@
                 position: absolute;
                 right: 10px;
                 top: 10px;
+                font-size: 20px;
+                text-decoration: none;
             }
 
             .edit-btn {
@@ -54,17 +70,25 @@
                 position: absolute;
                 right: 40px;
                 top: 10px;
+                font-size: 20px;
+                text-decoration: none;
             }
 
             form {
-                background: #fff;
+                background: white;
                 padding: 20px;
                 margin-top: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                width: 80%;
+                max-width: 600px;
             }
 
             label {
                 display: block;
                 margin-bottom: 10px;
+                font-size: 18px;
+                font-weight: bold;
             }
 
             input[type="text"] {
@@ -72,24 +96,27 @@
                 padding: 10px;
                 margin-bottom: 10px;
                 border: 1px solid #ddd;
+                border-radius: 4px;
             }
 
             input[type="submit"] {
-                background-color: #4CAF50;
+                background-color: #ff6e7f;
                 color: white;
                 border: none;
                 padding: 10px 20px;
                 cursor: pointer;
+                border-radius: 4px;
+                transition: background-color 0.2s ease-in-out;
             }
 
             input[type="submit"]:hover {
-                background-color: #45a049;
+                background-color: #ff4e5f;
             }
         </style>
     </head>
 
     <body>
-        <h1>Todo List - Made for Batch 6 updated on 23 June. 12:20 </h1>
+        <h1>Todo List - Colorful Edition</h1>
         <ul>
             <% todolist.forEach(function(todo, index) { %>
             <li>
@@ -101,11 +128,10 @@
         </ul>
 
         <form action="/todo/add/" method="post">
-            <p>
-                <label for="newtodo">What should I do?</label>
-                <input type="text" name="newtodo" id="newtodo" autofocus />
-                <input type="submit" value="Add" />
-            </p>
+            <label for="newtodo">What should I do?</label>
+            <input type="text" name="newtodo" id="newtodo" autofocus />
+            <input type="submit" value="Add" />
         </form>
     </body>
 </html>
+
