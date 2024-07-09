@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Todo List APP - Dark & Fabulous Edition 9 July 2024</title>
+        <title>Todo List APP - Dark & Fabulous Edition</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,6 +13,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                min-height: 100vh;
             }
 
             h1 {
@@ -28,8 +30,9 @@
             ul {
                 list-style: none;
                 padding: 0;
-                width: 80%;
+                width: 90%;
                 max-width: 600px;
+                margin: 20px 0;
             }
 
             ul li {
@@ -37,10 +40,13 @@
                 border-radius: 8px;
                 border: 1px solid #555;
                 margin-bottom: 10px;
-                padding: 10px;
+                padding: 15px;
                 position: relative;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
 
             ul li:hover {
@@ -58,22 +64,19 @@
                 color: #ff416c;
             }
 
-            .delete-btn {
-                color: #ff4b2b;
-                position: absolute;
-                right: 10px;
-                top: 10px;
+            .delete-btn, .edit-btn {
                 font-size: 20px;
                 text-decoration: none;
+                margin-left: 10px;
+                cursor: pointer;
+            }
+
+            .delete-btn {
+                color: #ff4b2b;
             }
 
             .edit-btn {
                 color: #FFC107;
-                position: absolute;
-                right: 40px;
-                top: 10px;
-                font-size: 20px;
-                text-decoration: none;
             }
 
             form {
@@ -82,7 +85,7 @@
                 margin-top: 20px;
                 border-radius: 8px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                width: 80%;
+                width: 90%;
                 max-width: 600px;
             }
 
@@ -116,6 +119,38 @@
             input[type="submit"]:hover {
                 background-color: #ff4b2b;
             }
+
+            @media (max-width: 600px) {
+                h1 {
+                    padding: 15px;
+                    font-size: 24px;
+                }
+
+                ul li {
+                    padding: 10px;
+                    font-size: 16px;
+                }
+
+                .delete-btn, .edit-btn {
+                    font-size: 18px;
+                }
+
+                form {
+                    padding: 15px;
+                }
+
+                label {
+                    font-size: 16px;
+                }
+
+                input[type="text"] {
+                    padding: 8px;
+                }
+
+                input[type="submit"] {
+                    padding: 8px 16px;
+                }
+            }
         </style>
     </head>
 
@@ -124,9 +159,11 @@
         <ul>
             <% todolist.forEach(function(todo, index) { %>
             <li>
-                <a href="/todo/delete/<%= index %>" class="delete-btn">✘</a>
-                <a href="/todo/<%= index %>" class="edit-btn">✎</a>
-                <%- todo %>
+                <span><%- todo %></span>
+                <span>
+                    <a href="/todo/delete/<%= index %>" class="delete-btn">✘</a>
+                    <a href="/todo/<%= index %>" class="edit-btn">✎</a>
+                </span>
             </li>
             <% }); %>
         </ul>
