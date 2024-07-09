@@ -1,137 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Todo List APP - Colorful Edition</title>
-        <style>
-            body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                background: linear-gradient(to right, #ffecd2, #fcb69f);
-                color: #333;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
+import React from 'react';
 
-            h1 {
-                background: linear-gradient(to right, #ff6e7f, #bfe9ff);
-                color: white;
-                margin: 0;
-                padding: 20px;
-                text-align: center;
-                width: 100%;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
+const TodoList = ({ todolist }) => {
+    return (
+        <div>
+            <h1>Todo List - Colorful Edition</h1>
+            <ul>
+                {todolist.map((todo, index) => (
+                    <li key={index}>
+                        <a href={`/todo/delete/${index}`} className="delete-btn">✘</a>
+                        <a href={`/todo/${index}`} className="edit-btn">✎</a>
+                        {todo}
+                    </li>
+                ))}
+            </ul>
 
-            ul {
-                list-style: none;
-                padding: 0;
-                width: 80%;
-                max-width: 600px;
-            }
+            <form action="/todo/add/" method="post">
+                <label htmlFor="newtodo">What should I do?</label>
+                <input type="text" name="newtodo" id="newtodo" autoFocus />
+                <input type="submit" value="Add" />
+            </form>
+        </div>
+    );
+};
 
-            ul li {
-                background: white;
-                border-radius: 8px;
-                border: 1px solid #ddd;
-                margin-bottom: 10px;
-                padding: 10px;
-                position: relative;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                transition: transform 0.2s ease-in-out;
-            }
+export default TodoList;
 
-            ul li:hover {
-                transform: scale(1.02);
-            }
-
-            ul li a {
-                color: #333;
-                text-decoration: none;
-                font-weight: bold;
-            }
-
-            ul li a:hover {
-                color: #ff6e7f;
-            }
-
-            .delete-btn {
-                color: red;
-                position: absolute;
-                right: 10px;
-                top: 10px;
-                font-size: 20px;
-                text-decoration: none;
-            }
-
-            .edit-btn {
-                color: #FFC107;
-                position: absolute;
-                right: 40px;
-                top: 10px;
-                font-size: 20px;
-                text-decoration: none;
-            }
-
-            form {
-                background: white;
-                padding: 20px;
-                margin-top: 20px;
-                border-radius: 8px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                width: 80%;
-                max-width: 600px;
-            }
-
-            label {
-                display: block;
-                margin-bottom: 10px;
-                font-size: 18px;
-                font-weight: bold;
-            }
-
-            input[type="text"] {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 10px;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-            }
-
-            input[type="submit"] {
-                background-color: #ff6e7f;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                cursor: pointer;
-                border-radius: 4px;
-                transition: background-color 0.2s ease-in-out;
-            }
-
-            input[type="submit"]:hover {
-                background-color: #ff4e5f;
-            }
-        </style>
-    </head>
-
-    <body>
-        <h1>Todo List - Colorful Edition</h1>
-        <ul>
-            <% todolist.forEach(function(todo, index) { %>
-            <li>
-                <a href="/todo/delete/<%= index %>" class="delete-btn">✘</a>
-                <a href="/todo/<%= index %>" class="edit-btn">✎</a>
-                <%- todo %>
-            </li>
-            <% }); %>
-        </ul>
-
-        <form action="/todo/add/" method="post">
-            <label for="newtodo">What should I do?</label>
-            <input type="text" name="newtodo" id="newtodo" autofocus />
-            <input type="submit" value="Add" />
-        </form>
-    </body>
-</html>
 
